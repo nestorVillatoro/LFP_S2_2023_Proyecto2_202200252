@@ -1,6 +1,6 @@
 from abstract.abstract import Expression
 
-class DeclaracionClaves(Expression):
+class DeclaracionRegistros(Expression):
 
     def __init__(self, nombre, elementos, fila, columna):
         self.nombre = nombre

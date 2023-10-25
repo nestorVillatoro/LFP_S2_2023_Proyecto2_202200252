@@ -1,9 +1,8 @@
 from abstract.abstract import Expression
 
-class DeclaracionClaves(Expression):
+class ElementosRegistros(Expression):
 
-    def __init__(self, nombre, elementos, fila, columna):
-        self.nombre = nombre
+    def __init__(self, elementos, fila, columna):
         self.elementos = elementos
         super().__init__(fila, columna)
 

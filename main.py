@@ -32,29 +32,53 @@ class TextEditorApp:
         self.root.config(menu=self.menu_bar)
 
         self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
+
         self.menu_bar.add_cascade(label="Archivo", menu=self.file_menu)
         self.file_menu.add_command(label="Abrir", command=self.open_file)
         self.file_menu.add_command(label="Guardar", command=self.save_file)
+        self.file_menu.add_command(label="Guardar Como", command=self.save_file_as)
+
         self.file_menu.add_separator()
         self.file_menu.add_command(label="Salir", command=self.root.quit)
 
         # Botón para analizar
         self.menu_bar.add_command(label="Analizar", command=self.analyze_code)
 
+    global verificador 
+    verificador= False
     def open_file(self):
-        file_path = filedialog.askopenfilename(filetypes=[("Archivos JSON", "*.JSON")])
+        global file_path
+        global verificador
+        file_path = filedialog.askopenfilename(filetypes=[("Archivos de texto", "*.bizdata")])
+        verificador = True
         if file_path:
             with open(file_path, 'r') as file:
                 content = file.read()
+                self.data = content
                 self.text_widget.delete(1.0, tk.END)
                 self.text_widget.insert(tk.END, content)
             self.update_line_numbers()
-
+        self.data = self.text_widget.get(1.0, tk.END)
+    
     def save_file(self):
-        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Archivos JSON", "*.JSON")])
-        if file_path:
+        if verificador == True:
             content = self.text_widget.get(1.0, tk.END)
-            with open(file_path, 'w') as file:
+            with open(file_path, 'w+') as file:
+                file.write(content)
+            messagebox.showinfo("Guardado", "Archivo guardado exitosamente.")
+        else:
+            file_path2 = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Archivos de texto", "*.bizdata")])
+            if file_path2:
+                content = self.text_widget.get(1.0, tk.END)
+                with open(file_path2, 'w') as file:
+                    file.write(content)
+                messagebox.showinfo("Guardado", "Archivo guardado exitosamente.")
+
+    def save_file_as(self):
+        file_path2 = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Archivos de texto", "*.bizdata")])
+        if file_path2:
+            content = self.text_widget.get(1.0, tk.END)
+            with open(file_path2, 'w') as file:
                 file.write(content)
             messagebox.showinfo("Guardado", "Archivo guardado exitosamente.")
 
@@ -83,15 +107,24 @@ class TextEditorApp:
                 else:
                     break
 
-            # Ejecutar instrucciones
+            #! Ejecutar instrucciones
 
             for elemento in lista_instrucciones:
                 if isinstance(elemento, DeclaracionClaves):
                     continue
+                    lista = elemento.ejecutarT()
+                    for i in range(len(lista)):
+                        imprimir_consola += lista[i] + " "
                 elif isinstance(elemento, Imprimir):
                     imprimir_consola += elemento.ejecutarT()
+                elif isinstance(elemento, Imprimirln):
+                    imprimir_consola += elemento.ejecutarT()
+                elif isinstance(elemento, ElementosRegistros):
+                    continue
 
             print(imprimir_consola)
+            for error in lista_errores:
+                print(error.operar(None))
 
                     # Muestra el resultado en la consola de salida
             self.output_console.config(state='normal')
