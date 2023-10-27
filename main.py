@@ -96,6 +96,7 @@ class TextEditorApp:
         # Obtén el código del área de texto
         code = self.text_widget.get(1.0, tk.END)
         imprimir_consola = ''
+        datos = ''
         try:
             # Ejecuta el análisis léxico
             instrucciones_lexico = instruccion(code)
@@ -111,16 +112,152 @@ class TextEditorApp:
 
             for elemento in lista_instrucciones:
                 if isinstance(elemento, DeclaracionClaves):
-                    continue
                     lista = elemento.ejecutarT()
                     for i in range(len(lista)):
-                        imprimir_consola += lista[i] + " "
+                        datos += lista[i] + " "
+                    datos += "\n"
+                    continue
+
                 elif isinstance(elemento, Imprimir):
                     imprimir_consola += elemento.ejecutarT()
+
                 elif isinstance(elemento, Imprimirln):
                     imprimir_consola += elemento.ejecutarT()
-                elif isinstance(elemento, ElementosRegistros):
+
+                elif isinstance(elemento, Conteo):
+                    imprimir_consola += str(elemento.ejecutarT()) + "\n"
+
+                elif isinstance(elemento, Promedio):
+                    x = 0
+                    palabrap = str(elemento.ejecutarT())
+                    for i in range(len(lista)):
+                        if palabrap == lista[i]:
+                            print("Elemento encontrado")
+                            for j in range(len(lista2)):
+                                lista3 = lista2[j].ejecutarT()
+                                x += lista3[i]
+                            promedio = (x/len(lista2))
+                            imprimir_consola += str(promedio) + "\n"
+
+                elif isinstance(elemento, Sumar):
+                    suma = 0
+                    palabras = str(elemento.ejecutarT())
+                    for i in range(len(lista)):
+                        if palabras == lista[i]:
+                            print("Elemento encontrado")
+                            for j in range(len(lista2)):
+                                lista3 = lista2[j].ejecutarT()
+                                suma += lista3[i]
+                            imprimir_consola += str(suma) + "\n"
+
+                elif isinstance(elemento, Max):
+                    lista4 = []
+                    palabram = str(elemento.ejecutarT())
+                    for i in range(len(lista)):
+                        if palabram == lista[i]:
+                            print("Elemento encontrado")
+                            for j in range(len(lista2)):
+                                lista3 = lista2[j].ejecutarT()
+                                lista4.append(lista3[i])
+                            
+                            imprimir_consola += str(max(lista4)) + "\n"
+
+                elif isinstance(elemento, Min):
+                    lista5 = []
+                    palabram = str(elemento.ejecutarT())
+                    for i in range(len(lista)):
+                        if palabram == lista[i]:
+                            print("Elemento encontrado")
+                            for j in range(len(lista2)):
+                                lista3 = lista2[j].ejecutarT()
+                                lista5.append(lista3[i])
+                            
+                            imprimir_consola += str(min(lista4)) + "\n"
+
+                elif isinstance(elemento, ExportarReporte):
+                    palabrae = str(elemento.ejecutarT())
+                    texto = ""
+                    texto2 = ""
+
+                    for aux in range(len(lista)):
+                        texto += "<th>"+str(lista[aux])+"</th>" + "\n"
+                    
+                    for aux2 in range(cant):
+                        texto2 += "<tr>" + "\n"
+                        lista3 = lista2[aux2].ejecutarT()
+                        for aux3 in range(len(lista3)):
+                            texto2 += "<td>"+str(lista3[aux3])+"</td>" + "\n"
+                        texto2 += "<tr>" + "\n"
+
+
+                    archivo = open('ExportarReporte.html', 'w+')
+                    archivo.write('''
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Exportar Reporte</title>
+        <meta name="viwport" content="width=divice-width, initial-scale=1">
+    </head>
+
+    <body>
+    <header>
+        <h1>Exportar Reporte</h1>
+    </header>
+            ''')
+                    
+                    archivo.write('''
+        <table border = "1">
+            <tr>
+                <th colspan="'''+str(len(lista))+'''" scope="rowgroup">'''+str(palabrae)+'''</th>
+            </tr>
+            ''')
+                    
+                    archivo.write('''
+            <tr>
+            '''
+                + texto +'''
+            </tr>'''
+            +texto2+'''
+        </table>
+        <footer>
+            <address>
+                <br>Pagina creada por Nestor Enrique Villatoro Avendaño - 202200252<br/>
+                Para el proyecto 2 del laboratorio de lenguajes formales y de programacion
+            </address>
+        </footer>
+    </body>
+</html>
+                                  ''')
+
+                    archivo.close()
+
+                elif isinstance(elemento, Contarsi):
+                    contadorsi = 0
+                    palabrac = str(elemento.ejecutarT())
+                    numc = elemento.ejecutarN()
+                    for i in range(len(lista)):
+                        if palabrac == lista[i]:
+                            print("Elemento encontrado")
+                            for j in range(len(lista2)):
+                                lista3 = lista2[j].ejecutarT()
+                                if lista3[i] == numc:
+                                    contadorsi += 1
+                            imprimir_consola += str(contadorsi) + "\n"
+                    
+                elif isinstance(elemento, DeclaracionRegistros):  
+                    lista2 = elemento.ejecutarT()
+                    cant = elemento.obtenerCant()
+                    for i in range(len(lista2)):
+                        lista3 = lista2[i].ejecutarT()
+                        for j in range(len(lista3)):
+                            datos += str(lista3[j]) + " "
+                        datos += "\n"
                     continue
+
+                elif isinstance(elemento, Datos): 
+                    booleano = elemento.ejecutarT()
+                    if booleano == True:
+                        imprimir_consola += datos
 
             print(imprimir_consola)
             for error in lista_errores:
