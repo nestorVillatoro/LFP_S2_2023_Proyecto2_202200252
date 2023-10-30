@@ -2,8 +2,9 @@ from abstract.abstract import Expression
 
 class Numero(Expression):
 
-    def __init__(self, lexema, fila, columna):
+    def __init__(self, lexema, fila, columna, tipo):
         self.lexema = lexema
+        self.tipo = tipo
         super().__init__(fila, columna)
 
     def operar(self, arbol):

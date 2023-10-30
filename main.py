@@ -4,6 +4,7 @@ from tkinter import filedialog, messagebox
 import subprocess
 from analizadores.analizadorLexico import *
 from analizadores.analizadorSintactico import *
+import os
 
 class TextEditorApp:
     def __init__(self, root):
@@ -44,6 +45,13 @@ class TextEditorApp:
         # Botón para analizar
         self.menu_bar.add_command(label="Analizar", command=self.analyze_code)
 
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
+
+        self.menu_bar.add_cascade(label="Reportes", menu=self.file_menu)
+        self.file_menu.add_command(label="Reporte de errores", command=self.reporte_de_errores)
+        self.file_menu.add_command(label="Reporte de tokens", command=self.reporte_de_tokens)
+        self.file_menu.add_command(label="Árbol de derivación", command=self.arbol)
+
     global verificador 
     verificador= False
     def open_file(self):
@@ -59,6 +67,135 @@ class TextEditorApp:
                 self.text_widget.insert(tk.END, content)
             self.update_line_numbers()
         self.data = self.text_widget.get(1.0, tk.END)
+
+    def reporte_de_errores(self):
+        texto = ""
+        for i in range(len(lista_errores_lexicos)):
+            objeto = lista_errores_lexicos[i]
+            texto += "<tr>"+"\n"
+            texto += "<td>"+str(objeto.lexema)+"</td>"+"\n"
+            texto += "<td>"+str(objeto.fila)+"</td>"+"\n"
+            texto += "<td>"+str(objeto.columna)+"</td>"+"\n"
+            texto += "</tr>"+"\n"
+
+        for i in range(len(lista_errores_sintacticos)):
+            objeto = lista_errores_sintacticos[i]
+            texto += "<tr>"+"\n"
+            texto += "<td>"+str(objeto.lexema)+"</td>"+"\n"
+            texto += "<td>"+str(objeto.fila)+"</td>"+"\n"
+            texto += "<td>"+str(objeto.columna)+"</td>"+"\n"
+            texto += "</tr>"+"\n"
+
+        archivo = open('reporteDeErrores.html', 'w+')
+        archivo.write('''
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Reporte de errores</title>
+        <meta name="viwport" content="width=divice-width, initial-scale=1">
+    </head>
+
+    <body>
+    <header>
+        <h1>Reporte de errores</h1>
+    </header>
+            ''') 
+        archivo.write('''
+        <table border = "1">
+            <tr>
+                <th>Token</th>
+                <th>Fila</th>
+                <th>Columna</th>
+            </tr>'''
+            +texto+'''
+        </table>
+        <footer>
+            <address>
+                <br>Pagina creada por Nestor Enrique Villatoro Avendaño - 202200252<br/>
+                Para el proyecto 2 del laboratorio de lenguajes formales y de programacion
+            </address>
+        </footer>
+    </body>
+</html>
+                                  ''')
+
+        archivo.close()
+        print("Archivo generado como reporteDeErrores.html")
+        messagebox.showinfo("Análisis exitoso", "Archivo generado exitosamente.")
+
+    def reporte_de_tokens(self):
+        texto = ""
+        for i in range(len(lista_lexemas_reporte)):
+            objeto = lista_lexemas_reporte[i]
+            texto += "<tr>"+"\n"
+            texto += "<td>"+str(objeto.tipo)+"</td>"+"\n"
+            texto += "<td>"+str(objeto.lexema)+"</td>"+"\n"
+            texto += "<td>"+str(objeto.fila)+"</td>"+"\n"
+            texto += "<td>"+str(objeto.columna)+"</td>"+"\n"
+            texto += "</tr>"+"\n"
+
+        
+        archivo = open('reporteDeTokens.html', 'w+')
+        archivo.write('''
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Reporte de tokens</title>
+        <meta name="viwport" content="width=divice-width, initial-scale=1">
+    </head>
+
+    <body>
+    <header>
+        <h1>Reporte de tokens</h1>
+    </header>
+            ''') 
+        archivo.write('''
+        <table border = "1">
+            <tr>
+                <th>Tipo</th>
+                <th>Lexema</th>
+                <th>Fila</th>
+                <th>Columna</th>
+            </tr>'''
+            +texto+'''
+        </table>
+        <footer>
+            <address>
+                <br>Pagina creada por Nestor Enrique Villatoro Avendaño - 202200252<br/>
+                Para el proyecto 2 del laboratorio de lenguajes formales y de programacion
+            </address>
+        </footer>
+    </body>
+</html>
+                                  ''')
+
+        archivo.close()
+        print("Archivo generado como reporteDeTokens.html")
+        messagebox.showinfo("Análisis exitoso", "Archivo generado exitosamente.")
+
+    def arbol(self):
+        contador = 0
+        text = ""
+        text += f"\tarbol" + "[" + f"style = filled" + f",fillcolor = gray" + f",fontcolor = black" + "]\n"
+        text += f"\tarbol" + f"[label = \"Árbol de derivación" + "\"]\n"
+        for i in range(len(lista_arbol)):
+            text += f"\ttipo{i}" + "[" + f"style = filled" + f",fillcolor = crimson" + f",fontcolor = black" + "]\n"
+            text += f"\ttipo{i}" + f"[label = \"{str(lista_arbol[i].pop(0))}" + "\"]\n"
+            text += f"\tarbol -> tipo{i}\n"
+            for j in range(len(lista_arbol[i])):
+                contador+= 1
+                objeto = lista_arbol[i][j]
+                text += f"\telemento{contador}" + "[" + f"style = filled" + f",fillcolor = crimson" + f",fontcolor = black" + "]\n"
+                text += f"\telemento{contador}" + f"[label = \"{str(objeto)}" + "\"]\n"
+                text += f"\ttipo{i} -> elemento{contador}\n"
+
+
+        r = open("arbol.dot", "w", encoding="utf-8")
+        r.write("digraph G {\n\n")
+        r.write(text)
+        r.write("}")
+        r.close()
+        os.system("cmd /c dot -Tsvg arbol.dot > arbol.svg")
     
     def save_file(self):
         if verificador == True:

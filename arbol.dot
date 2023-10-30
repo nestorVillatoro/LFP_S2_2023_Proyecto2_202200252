@@ -1,0 +1,395 @@
+digraph G {
+
+	arbol[style = filled,fillcolor = gray,fontcolor = black]
+	arbol[label = "Árbol de derivación"]
+	tipo0[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo0[label = "Claves"]
+	arbol -> tipo0
+	elemento1[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento1[label = "="]
+	tipo0 -> elemento1
+	elemento2[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento2[label = "["]
+	tipo0 -> elemento2
+	elemento3[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento3[label = "'"]
+	tipo0 -> elemento3
+	elemento4[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento4[label = "codigo"]
+	tipo0 -> elemento4
+	elemento5[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento5[label = "'"]
+	tipo0 -> elemento5
+	elemento6[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento6[label = ","]
+	tipo0 -> elemento6
+	elemento7[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento7[label = "'"]
+	tipo0 -> elemento7
+	elemento8[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento8[label = "producto"]
+	tipo0 -> elemento8
+	elemento9[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento9[label = "'"]
+	tipo0 -> elemento9
+	elemento10[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento10[label = ","]
+	tipo0 -> elemento10
+	elemento11[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento11[label = "'"]
+	tipo0 -> elemento11
+	elemento12[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento12[label = "precio_compra"]
+	tipo0 -> elemento12
+	elemento13[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento13[label = "'"]
+	tipo0 -> elemento13
+	elemento14[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento14[label = ","]
+	tipo0 -> elemento14
+	elemento15[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento15[label = "'"]
+	tipo0 -> elemento15
+	elemento16[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento16[label = "precio_venta"]
+	tipo0 -> elemento16
+	elemento17[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento17[label = "'"]
+	tipo0 -> elemento17
+	elemento18[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento18[label = ","]
+	tipo0 -> elemento18
+	elemento19[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento19[label = "'"]
+	tipo0 -> elemento19
+	elemento20[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento20[label = "stock"]
+	tipo0 -> elemento20
+	elemento21[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento21[label = "'"]
+	tipo0 -> elemento21
+	elemento22[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento22[label = "]"]
+	tipo0 -> elemento22
+	tipo1[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo1[label = "Registros"]
+	arbol -> tipo1
+	elemento23[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento23[label = "="]
+	tipo1 -> elemento23
+	elemento24[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento24[label = "["]
+	tipo1 -> elemento24
+	elemento25[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento25[label = "{"]
+	tipo1 -> elemento25
+	elemento26[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento26[label = "1"]
+	tipo1 -> elemento26
+	elemento27[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento27[label = ","]
+	tipo1 -> elemento27
+	elemento28[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento28[label = "'"]
+	tipo1 -> elemento28
+	elemento29[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento29[label = "Barbacoa"]
+	tipo1 -> elemento29
+	elemento30[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento30[label = "'"]
+	tipo1 -> elemento30
+	elemento31[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento31[label = ","]
+	tipo1 -> elemento31
+	elemento32[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento32[label = "10.5"]
+	tipo1 -> elemento32
+	elemento33[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento33[label = ","]
+	tipo1 -> elemento33
+	elemento34[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento34[label = "20.0"]
+	tipo1 -> elemento34
+	elemento35[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento35[label = ","]
+	tipo1 -> elemento35
+	elemento36[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento36[label = "6"]
+	tipo1 -> elemento36
+	elemento37[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento37[label = "}"]
+	tipo1 -> elemento37
+	elemento38[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento38[label = "{"]
+	tipo1 -> elemento38
+	elemento39[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento39[label = "2"]
+	tipo1 -> elemento39
+	elemento40[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento40[label = ","]
+	tipo1 -> elemento40
+	elemento41[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento41[label = "'"]
+	tipo1 -> elemento41
+	elemento42[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento42[label = "Salsa"]
+	tipo1 -> elemento42
+	elemento43[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento43[label = "'"]
+	tipo1 -> elemento43
+	elemento44[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento44[label = ","]
+	tipo1 -> elemento44
+	elemento45[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento45[label = "13.0"]
+	tipo1 -> elemento45
+	elemento46[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento46[label = ","]
+	tipo1 -> elemento46
+	elemento47[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento47[label = "16.0"]
+	tipo1 -> elemento47
+	elemento48[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento48[label = ","]
+	tipo1 -> elemento48
+	elemento49[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento49[label = "7"]
+	tipo1 -> elemento49
+	elemento50[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento50[label = "}"]
+	tipo1 -> elemento50
+	elemento51[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento51[label = "{"]
+	tipo1 -> elemento51
+	elemento52[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento52[label = "3"]
+	tipo1 -> elemento52
+	elemento53[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento53[label = ","]
+	tipo1 -> elemento53
+	elemento54[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento54[label = "'"]
+	tipo1 -> elemento54
+	elemento55[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento55[label = "Mayonesa"]
+	tipo1 -> elemento55
+	elemento56[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento56[label = "'"]
+	tipo1 -> elemento56
+	elemento57[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento57[label = ","]
+	tipo1 -> elemento57
+	elemento58[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento58[label = "15.0"]
+	tipo1 -> elemento58
+	elemento59[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento59[label = ","]
+	tipo1 -> elemento59
+	elemento60[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento60[label = "18.0"]
+	tipo1 -> elemento60
+	elemento61[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento61[label = ","]
+	tipo1 -> elemento61
+	elemento62[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento62[label = "8"]
+	tipo1 -> elemento62
+	elemento63[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento63[label = "}"]
+	tipo1 -> elemento63
+	elemento64[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento64[label = "{"]
+	tipo1 -> elemento64
+	elemento65[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento65[label = "4"]
+	tipo1 -> elemento65
+	elemento66[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento66[label = ","]
+	tipo1 -> elemento66
+	elemento67[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento67[label = "'"]
+	tipo1 -> elemento67
+	elemento68[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento68[label = "Mostaza"]
+	tipo1 -> elemento68
+	elemento69[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento69[label = "'"]
+	tipo1 -> elemento69
+	elemento70[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento70[label = ","]
+	tipo1 -> elemento70
+	elemento71[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento71[label = "14.0"]
+	tipo1 -> elemento71
+	elemento72[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento72[label = ","]
+	tipo1 -> elemento72
+	elemento73[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento73[label = "16.0"]
+	tipo1 -> elemento73
+	elemento74[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento74[label = ","]
+	tipo1 -> elemento74
+	elemento75[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento75[label = "4"]
+	tipo1 -> elemento75
+	elemento76[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento76[label = "}"]
+	tipo1 -> elemento76
+	elemento77[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento77[label = "]"]
+	tipo1 -> elemento77
+	tipo2[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo2[label = "conteo"]
+	arbol -> tipo2
+	elemento78[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento78[label = "("]
+	tipo2 -> elemento78
+	elemento79[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento79[label = ")"]
+	tipo2 -> elemento79
+	elemento80[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento80[label = ";"]
+	tipo2 -> elemento80
+	tipo3[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo3[label = "datos"]
+	arbol -> tipo3
+	elemento81[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento81[label = "("]
+	tipo3 -> elemento81
+	elemento82[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento82[label = ")"]
+	tipo3 -> elemento82
+	elemento83[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento83[label = ";"]
+	tipo3 -> elemento83
+	tipo4[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo4[label = "promedio"]
+	arbol -> tipo4
+	elemento84[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento84[label = "("]
+	tipo4 -> elemento84
+	elemento85[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento85[label = "'"]
+	tipo4 -> elemento85
+	elemento86[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento86[label = "stock"]
+	tipo4 -> elemento86
+	elemento87[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento87[label = "'"]
+	tipo4 -> elemento87
+	elemento88[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento88[label = ")"]
+	tipo4 -> elemento88
+	elemento89[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento89[label = ";"]
+	tipo4 -> elemento89
+	tipo5[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo5[label = "sumar"]
+	arbol -> tipo5
+	elemento90[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento90[label = "("]
+	tipo5 -> elemento90
+	elemento91[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento91[label = "'"]
+	tipo5 -> elemento91
+	elemento92[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento92[label = "stock"]
+	tipo5 -> elemento92
+	elemento93[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento93[label = "'"]
+	tipo5 -> elemento93
+	elemento94[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento94[label = ")"]
+	tipo5 -> elemento94
+	elemento95[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento95[label = ";"]
+	tipo5 -> elemento95
+	tipo6[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo6[label = "contarsi"]
+	arbol -> tipo6
+	elemento96[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento96[label = "("]
+	tipo6 -> elemento96
+	elemento97[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento97[label = "'"]
+	tipo6 -> elemento97
+	elemento98[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento98[label = "precio_venta"]
+	tipo6 -> elemento98
+	elemento99[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento99[label = "'"]
+	tipo6 -> elemento99
+	elemento100[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento100[label = ","]
+	tipo6 -> elemento100
+	elemento101[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento101[label = ")"]
+	tipo6 -> elemento101
+	elemento102[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento102[label = ";"]
+	tipo6 -> elemento102
+	tipo7[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo7[label = "max"]
+	arbol -> tipo7
+	elemento103[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento103[label = "("]
+	tipo7 -> elemento103
+	elemento104[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento104[label = "'"]
+	tipo7 -> elemento104
+	elemento105[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento105[label = "stock"]
+	tipo7 -> elemento105
+	elemento106[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento106[label = "'"]
+	tipo7 -> elemento106
+	elemento107[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento107[label = ")"]
+	tipo7 -> elemento107
+	elemento108[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento108[label = ";"]
+	tipo7 -> elemento108
+	tipo8[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo8[label = "min"]
+	arbol -> tipo8
+	elemento109[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento109[label = "("]
+	tipo8 -> elemento109
+	elemento110[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento110[label = "'"]
+	tipo8 -> elemento110
+	elemento111[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento111[label = "stock"]
+	tipo8 -> elemento111
+	elemento112[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento112[label = "'"]
+	tipo8 -> elemento112
+	elemento113[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento113[label = ")"]
+	tipo8 -> elemento113
+	elemento114[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento114[label = ";"]
+	tipo8 -> elemento114
+	tipo9[style = filled,fillcolor = crimson,fontcolor = black]
+	tipo9[label = "exportarReporte"]
+	arbol -> tipo9
+	elemento115[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento115[label = "("]
+	tipo9 -> elemento115
+	elemento116[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento116[label = "'"]
+	tipo9 -> elemento116
+	elemento117[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento117[label = "Reporte_HTML_de_abarroteria"]
+	tipo9 -> elemento117
+	elemento118[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento118[label = "'"]
+	tipo9 -> elemento118
+	elemento119[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento119[label = ")"]
+	tipo9 -> elemento119
+	elemento120[style = filled,fillcolor = crimson,fontcolor = black]
+	elemento120[label = ";"]
+	tipo9 -> elemento120
+}

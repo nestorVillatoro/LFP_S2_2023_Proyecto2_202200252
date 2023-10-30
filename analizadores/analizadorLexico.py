@@ -13,6 +13,7 @@ n_columna = 1
 lista_lexemas = []
 instrucciones = []
 lista_errores = []
+lista_errores_lexicos = []
 lista_lexemas_reporte = []
 
 def instruccion(cadena):
@@ -29,16 +30,19 @@ def instruccion(cadena):
         if char == '"':       #! leemos nuestra cadena y al encontrar " que habre empieza a crear el token
             l = Lexema('"', n_linea, n_columna, 'COMILLA')
             lista_lexemas.append(l)
+            lista_lexemas_reporte.append(l)
             lexema, cadena = armar_lexema(cadena[puntero:])
             if lexema and cadena:
                 n_columna += 1
                 #Armar lexema como clase
                 l = Lexema(lexema, n_linea, n_columna, 'TEXTO')
                 lista_lexemas.append(l)  #! Agregamos los lexemas a la lista_lexema
+                lista_lexemas_reporte.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
             l = Lexema('"', n_linea, n_columna, 'COMILLA')
             lista_lexemas.append(l)
+            lista_lexemas_reporte.append(l)
             n_columna += 1
             puntero = 0
 
@@ -47,6 +51,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'CLAVES')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -56,6 +61,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'REGISTROS')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -65,6 +71,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'IMPRIMIR')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -78,6 +85,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'DATOS')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -91,6 +99,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'CONTEO')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -104,6 +113,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'IMPRIMIRLN')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -117,6 +127,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'PROMEDIO')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -130,6 +141,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'SUMAR')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -143,6 +155,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'CONTARSI')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -156,6 +169,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'EXPORTARREPORTE')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -169,6 +183,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'MAX')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -182,6 +197,7 @@ def instruccion(cadena):
             if lexema and cadena:
                 n_columna += 1
                 l = Lexema(lexema, n_linea, n_columna, 'MIN')
+                lista_lexemas_reporte.append(l)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
                 puntero = 0
@@ -195,7 +211,8 @@ def instruccion(cadena):
             if token and cadena:
                 n_columna += 1
                 #! Armamos lexema como clase
-                n = Numero(token, n_linea, n_columna)
+                n = Numero(token, n_linea, n_columna, "DIGITO")
+                lista_lexemas_reporte.append(n)
 
                 lista_lexemas.append(n)
                 n_columna += len(str(token)) + 1
@@ -206,6 +223,7 @@ def instruccion(cadena):
             c = Lexema(char, n_linea, n_columna, 'CORCHETE')
 
             lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
@@ -215,6 +233,7 @@ def instruccion(cadena):
             c = Lexema(char, n_linea, n_columna, 'LLAVES')
 
             lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
@@ -224,6 +243,7 @@ def instruccion(cadena):
             c = Lexema(char, n_linea, n_columna, 'PUNTOYCOMA')
 
             lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
@@ -231,6 +251,7 @@ def instruccion(cadena):
         elif char == '=':
             c = Lexema(char, n_linea, n_columna, 'IGUAL')
             lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
@@ -238,6 +259,7 @@ def instruccion(cadena):
         elif char == '#':
             c = Lexema(char, n_linea, n_columna, 'NUMERAL')
             lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
@@ -245,6 +267,7 @@ def instruccion(cadena):
         elif char == ',':
             c = Lexema(char, n_linea, n_columna, 'COMA')
             lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
@@ -252,6 +275,15 @@ def instruccion(cadena):
         elif char == ')':
             c = Lexema(char, n_linea, n_columna, 'PARDER')
             lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
+            cadena = cadena[1:]
+            puntero = 0
+            n_columna += 1
+
+        elif char == "'''":
+            c = Lexema(char, n_linea, n_columna, 'COMENTARIO')
+            lista_lexemas.append(c)
+            lista_lexemas_reporte.append(c)
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
@@ -273,6 +305,7 @@ def instruccion(cadena):
             puntero = 0
         else:
             lista_errores.append(Errores(char, "Léxico",n_linea, n_columna))
+            lista_errores_lexicos.append(Errores(char, "Léxico",n_linea, n_columna))
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
